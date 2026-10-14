@@ -5,11 +5,12 @@ import { cidade, emergencia, linksRodape } from "@/lib/navegacao";
 import { IconeInstagram, IconeSpotify, IconeYoutube } from "./IconesSociais";
 import { Logo } from "./Logo";
 
+// Só aparecem as redes que já têm link preenchido em data/equipe.ts.
 const redes = [
   { nome: "Instagram", url: redesSociais.instagram, Icone: IconeInstagram },
   { nome: "YouTube", url: redesSociais.youtube, Icone: IconeYoutube },
   { nome: "Spotify", url: redesSociais.spotify, Icone: IconeSpotify },
-];
+].filter((r) => r.url);
 
 export function Rodape() {
   return (
@@ -36,10 +37,10 @@ export function Rodape() {
         </nav>
 
         <div className="flex flex-wrap items-center gap-6">
-          <ul className="flex items-center gap-2" aria-label="Redes sociais">
-            {redes.map(({ nome, url, Icone }) => (
-              <li key={nome}>
-                {url ? (
+          {redes.length > 0 && (
+            <ul className="flex items-center gap-2" aria-label="Redes sociais">
+              {redes.map(({ nome, url, Icone }) => (
+                <li key={nome}>
                   <a
                     href={url}
                     target="_blank"
@@ -49,19 +50,11 @@ export function Rodape() {
                     <Icone className="h-5.5 w-5.5" />
                     <span className="sr-only">{nome} do Conexões que Incluem (abre em nova aba)</span>
                   </a>
-                ) : (
-                  <span
-                    title={`${nome}: em breve`}
-                    className="flex h-10 w-10 items-center justify-center text-branco/80"
-                  >
-                    <Icone className="h-5.5 w-5.5" />
-                    <span className="sr-only">{nome}: em breve</span>
-                  </span>
-                )}
-              </li>
-            ))}
-          </ul>
-          <div className="border-branco/25 text-nota sm:border-l sm:pl-6">
+                </li>
+              ))}
+            </ul>
+          )}
+          <div className={`border-branco/25 text-nota ${redes.length > 0 ? "sm:border-l sm:pl-6" : ""}`}>
             <p className="flex items-center gap-1.5 font-bold">
               <MapPin aria-hidden="true" className="h-4 w-4" />
               {cidade}

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState, useSyncExternalStore } from "react";
-import { Menu, Search, User, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import { menu } from "@/lib/navegacao";
 import { assinar, definirPreferencia, lerTexto, type TamanhoTexto } from "@/lib/preferencias";
 import { Logo } from "./Logo";
@@ -127,16 +127,8 @@ export function Cabecalho() {
         <div className="ml-auto flex items-center gap-2 xl:ml-0">
           <Busca id="busca-topo" className="hidden w-64 lg:block 2xl:w-72" />
           <BotaoTexto />
-          <Link
-            href="/cadastro"
-            aria-hidden="true"
-            tabIndex={-1}
-            className="hidden h-11 w-11 items-center justify-center rounded-full bg-faixa text-marinho sm:flex"
-          >
-            <User className="h-5 w-5" />
-          </Link>
           <Link href="/cadastro" className="botao botao-escuro hidden min-h-11 px-5 sm:inline-flex">
-            Acessar
+            Cadastre-se
           </Link>
           <button
             type="button"
@@ -176,7 +168,7 @@ export function Cabecalho() {
             </ul>
           </nav>
           <Link href="/cadastro" className="botao botao-escuro mt-4 w-full sm:hidden">
-            Acessar
+            Cadastre-se
           </Link>
         </div>
       </div>

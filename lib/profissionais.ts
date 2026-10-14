@@ -19,9 +19,6 @@ export const especialidades = [
   { id: "psiquiatria", nome: "Psiquiatria" },
 ] as const;
 
-/** Filtros mostrados na página inicial (os demais aparecem na página Profissionais). */
-export const especialidadesHome = ["psicologia", "fonoaudiologia", "terapia-ocupacional", "odontologia", "cuidador"];
-
 export type EspecialidadeId = (typeof especialidades)[number]["id"];
 
 export type Profissional = {
