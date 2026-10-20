@@ -35,10 +35,8 @@ export default async function Artigo({ params }: PageProps<"/biblioteca/[slug]">
               <li>
                 <Link href="/biblioteca">Biblioteca</Link>
               </li>
-              <li aria-hidden="true">
-                <ChevronRight className="h-4 w-4" />
-              </li>
-              <li>
+              <li className="flex items-center gap-1.5">
+                <ChevronRight aria-hidden="true" className="h-4 w-4" />
                 <Link href={`/biblioteca#${categoria.id}`}>{categoria.nome}</Link>
               </li>
             </ol>

@@ -24,7 +24,7 @@ export function PaginaPerfil({ dados }: { dados: Dados }) {
                     className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-titulo font-extrabold ${cor.circ} ${cor.tom}`}
                   >
                     {i + 1}
-                  </span>
+                  </span>{" "}
                   <span className="flex flex-1 flex-col">
                     <span className="font-titulo font-bold text-marinho group-hover:underline">{item.titulo}</span>
                     <span className="mt-1 text-nota text-texto-suave">{item.texto}</span>

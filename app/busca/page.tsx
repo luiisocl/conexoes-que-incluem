@@ -5,7 +5,6 @@ import { CabecalhoPagina, SetaCirculo } from "@/components/ui";
 import { listarArtigos } from "@/lib/artigos";
 import { categorias, obterCategoria } from "@/lib/categorias";
 import { classesCor } from "@/lib/cores";
-import { listarProfissionais } from "@/lib/profissionais";
 
 export const metadata: Metadata = {
   title: "Busca",
@@ -22,10 +21,8 @@ const paginas = [
   { titulo: "Para famílias", resumo: "Primeiros passos, rotina, direitos e apoio para mães e pais.", href: "/para-familias" },
   { titulo: "Para educadores", resumo: "Estratégias para professores e inclusão escolar.", href: "/para-educadores" },
   { titulo: "Para cuidadores", resumo: "Cuidado diário: higiene, alimentação, sono e crises.", href: "/para-cuidadores" },
-  { titulo: "Profissionais", resumo: "Diretório de profissionais em Teresina (em construção).", href: "/profissionais" },
-  { titulo: "Cadastro", resumo: "Receba novidades do Conexões que Incluem.", href: "/cadastro" },
+  { titulo: "Profissionais", resumo: "Quem faz o quê no cuidado e como chegar pelo SUS.", href: "/profissionais" },
   { titulo: "Acessibilidade", resumo: "Reduzir estímulos e tamanho do texto.", href: "/acessibilidade" },
-  { titulo: "Doe", resumo: "Como apoiar o projeto.", href: "/doe" },
 ];
 
 // Ignora acentos e maiúsculas: "crianca" encontra "criança".
@@ -44,8 +41,7 @@ export default async function Busca({ searchParams }: PageProps<"/busca">) {
   );
   const temas = categorias.filter((c) => casa(`${c.nome} ${c.descricao}`));
   const paginasEncontradas = paginas.filter((p) => casa(`${p.titulo} ${p.resumo}`));
-  const profissionais = (await listarProfissionais()).filter((p) => casa(`${p.area} ${p.descricao} ${p.cidade}`));
-  const total = artigos.length + temas.length + paginasEncontradas.length + profissionais.length;
+  const total = artigos.length + temas.length + paginasEncontradas.length;
 
   return (
     <>
@@ -129,16 +125,6 @@ export default async function Busca({ searchParams }: PageProps<"/busca">) {
                 </li>
               ))}
             </ul>
-          </section>
-        )}
-
-        {profissionais.length > 0 && (
-          <section aria-labelledby="r-prof" className="mt-8">
-            <h2 id="r-prof" className="text-h3">Profissionais</h2>
-            <p className="mt-2">
-              {profissionais.length} perfil(is) demonstrativo(s) relacionado(s).{" "}
-              <Link href="/profissionais">Ver diretório</Link>
-            </p>
           </section>
         )}
 

@@ -127,9 +127,6 @@ export function Cabecalho() {
         <div className="ml-auto flex items-center gap-2 xl:ml-0">
           <Busca id="busca-topo" className="hidden w-64 lg:block 2xl:w-72" />
           <BotaoTexto />
-          <Link href="/cadastro" className="botao botao-escuro hidden min-h-11 px-5 sm:inline-flex">
-            Cadastre-se
-          </Link>
           <button
             type="button"
             aria-expanded={aberto}
@@ -167,9 +164,6 @@ export function Cabecalho() {
               })}
             </ul>
           </nav>
-          <Link href="/cadastro" className="botao botao-escuro mt-4 w-full sm:hidden">
-            Cadastre-se
-          </Link>
         </div>
       </div>
     </header>

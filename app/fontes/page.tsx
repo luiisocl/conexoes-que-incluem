@@ -15,7 +15,13 @@ const grupos: { titulo: string; descricao: string; cor: Cor; itens: Fonte[] }[] 
     titulo: "Saúde",
     descricao: "Órgãos oficiais de saúde, no Brasil e no mundo.",
     cor: "azul",
-    itens: [fontes.msTea, fontes.omsAutismo, fontes.cdcSinais, fontes.cdcDiagnostico],
+    itens: [fontes.msTea, fontes.msDiretrizesTea, fontes.omsAutismo, fontes.cdcSinais, fontes.cdcDiagnostico],
+  },
+  {
+    titulo: "Boas práticas no dia a dia",
+    descricao: "Diretrizes e orientações práticas usadas nos artigos da biblioteca.",
+    cor: "verde",
+    itens: [fontes.niceCg170, fontes.nasOrientacoes],
   },
   {
     titulo: "Dados",

@@ -1,70 +1,57 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Users } from "lucide-react";
-import { DiretorioProfissionais } from "@/components/DiretorioProfissionais";
 import { CabecalhoPagina, Nota } from "@/components/ui";
-import { especialidades, listarProfissionais } from "@/lib/profissionais";
 
 export const metadata: Metadata = {
   title: "Profissionais",
-  description: "Diretório de profissionais e cuidadores que atuam com crianças com TEA em Teresina - PI. Em construção.",
+  description:
+    "Quem faz o quê no cuidado de crianças com TEA e como chegar a esses profissionais pelo SUS em Teresina - PI.",
 };
 
-export default async function Profissionais() {
-  const profissionais = await listarProfissionais();
+const areas = [
+  ["Neuropediatria e psiquiatria", "Médicos que podem fazer o diagnóstico e acompanhar a saúde."],
+  ["Psicologia", "Avaliação, terapias e orientação para a família."],
+  ["Fonoaudiologia", "Comunicação, linguagem, fala e alimentação."],
+  ["Terapia ocupacional", "Autonomia, questões sensoriais e atividades do dia a dia."],
+  ["Odontologia", "Saúde bucal com atendimento adaptado."],
+  ["Cuidadoras(es)", "Apoio nas atividades da rotina, em casa ou na escola."],
+];
 
+export default function Profissionais() {
   return (
     <>
-      <CabecalhoPagina rotulo="Profissionais" titulo="Encontre apoio especializado" icone={Users}>
+      <CabecalhoPagina rotulo="Profissionais" titulo="Quem cuida e como chegar" icone={Users}>
         <p>
-          Profissionais e cuidadores que atuam com crianças com TEA em Teresina e região. Estamos
-          validando os parceiros: por enquanto, os perfis abaixo são apenas demonstrativos.
+          O cuidado de uma criança com TEA costuma envolver profissionais de áreas diferentes.
+          Veja o que cada um faz e por onde começar em Teresina.
         </p>
       </CabecalhoPagina>
 
-      <div className="container-pagina mt-10">
-        <div className="mb-8 grid gap-4 md:grid-cols-2">
-          <Nota titulo="Em construção" cor="amarelo">
-            <p>
-              Nomes e registros são fictícios. As fotos são de banco de imagens e não mostram
-              profissionais reais. O contato será liberado quando os parceiros forem validados.
-            </p>
-          </Nota>
-          <Nota titulo="Pelo SUS" cor="verde">
-            <p>
-              O caminho começa na Unidade Básica de Saúde, que pode encaminhar para serviços
-              especializados. Veja a <Link href="/rede-de-apoio">rede de apoio em Teresina</Link>.
-            </p>
-          </Nota>
-        </div>
-
-        <h2 className="sr-only">Perfis de profissionais</h2>
-        <DiretorioProfissionais
-          profissionais={profissionais}
-          filtros={especialidades.map((e) => e.id)}
-          variante="completo"
-        />
-
-        <section aria-labelledby="quem-faz" className="mt-14 rounded-bloco bg-fundo-suave p-6 sm:p-8">
+      <div className="container-pagina mt-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem]">
+        <section aria-labelledby="quem-faz" className="rounded-bloco bg-fundo-suave p-6 sm:p-8">
           <h2 id="quem-faz" className="text-h3">
             Quem faz o quê
           </h2>
-          <dl className="mt-4 grid gap-4 text-nota sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              ["Neuropediatria e psiquiatria", "Médicos que podem fazer o diagnóstico e acompanhar a saúde."],
-              ["Psicologia", "Avaliação, terapias e orientação para a família."],
-              ["Fonoaudiologia", "Comunicação, linguagem, fala e alimentação."],
-              ["Terapia ocupacional", "Autonomia, questões sensoriais e atividades do dia a dia."],
-              ["Odontologia", "Saúde bucal com atendimento adaptado."],
-              ["Cuidadoras(es)", "Apoio nas atividades da rotina, em casa ou na escola."],
-            ].map(([t, d]) => (
+          <dl className="mt-5 grid gap-5 sm:grid-cols-2">
+            {areas.map(([t, d]) => (
               <div key={t}>
                 <dt className="font-titulo font-bold text-marinho">{t}</dt>
-                <dd className="mt-0.5 text-texto-suave">{d}</dd>
+                <dd className="mt-0.5 text-nota text-texto-suave">{d}</dd>
               </div>
             ))}
           </dl>
         </section>
+
+        <div>
+          <Nota titulo="Pelo SUS" cor="verde">
+            <p>
+              O caminho começa na Unidade Básica de Saúde (UBS) mais perto de casa. A equipe da UBS
+              pode encaminhar para serviços especializados, como o Cetea e o CEIR. Veja a{" "}
+              <Link href="/rede-de-apoio">rede de apoio em Teresina</Link>.
+            </p>
+          </Nota>
+        </div>
       </div>
     </>
   );

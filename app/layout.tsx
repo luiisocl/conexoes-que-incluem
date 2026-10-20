@@ -29,7 +29,7 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   title: {
-    default: "Conexões que Incluem — Informação que acolhe",
+    default: "Conexões que Incluem: Guia Digital de Apoio ao Autismo",
     template: "%s · Conexões que Incluem",
   },
   description:

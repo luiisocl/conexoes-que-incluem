@@ -154,7 +154,7 @@ export function Sumario({ itens }: { itens: { id: string; titulo: string }[] }) 
         {itens.map((i, n) => (
           <li key={i.id}>
             <a href={`#${i.id}`} className="flex gap-2.5 rounded-campo px-2 py-1.5 text-texto no-underline hover:bg-faixa hover:text-azul">
-              <span className="font-titulo font-bold text-azul">{n + 1}</span>
+              <span aria-hidden="true" className="font-titulo font-bold text-azul">{n + 1}</span>{" "}
               {i.titulo}
             </a>
           </li>
@@ -198,7 +198,7 @@ export function Passos({ itens }: { itens: ReactNode[] }) {
         <li key={i} className="flex gap-3">
           <span aria-hidden="true" className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-azul-circ font-titulo text-mini font-extrabold text-azul-tom">
             {i + 1}
-          </span>
+          </span>{" "}
           <span className="pt-0.5">{p}</span>
         </li>
       ))}

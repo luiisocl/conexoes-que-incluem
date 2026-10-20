@@ -15,7 +15,6 @@ export const linksRodape = [
   { href: "/fontes", rotulo: "Fontes e referências" },
   { href: "/privacidade", rotulo: "Política de privacidade" },
   { href: "/sobre#contato", rotulo: "Fale conosco" },
-  { href: "/doe", rotulo: "Doe" },
 ] as const;
 
 export const emergencia = [

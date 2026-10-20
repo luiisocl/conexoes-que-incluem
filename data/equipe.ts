@@ -1,21 +1,19 @@
-// EDITE AQUI: coloque os nomes e funções dos membros do grupo.
-// Pode adicionar ou remover linhas. "funcao" e "curso" podem ficar vazios ("").
-export const equipe = [
-  { nome: "Nome do integrante 1", funcao: "Coordenação e conteúdo", curso: "Curso / período" },
-  { nome: "Nome do integrante 2", funcao: "Pesquisa e revisão de fontes", curso: "Curso / período" },
-  { nome: "Nome do integrante 3", funcao: "Design e acessibilidade", curso: "Curso / período" },
-  { nome: "Nome do integrante 4", funcao: "Desenvolvimento", curso: "Curso / período" },
-];
+// EDITE AQUI: coloque os nomes dos membros do grupo, um por linha, entre aspas.
+// Enquanto a lista estiver vazia, a página Sobre não mostra a lista de nomes.
+// Exemplo: export const equipe: string[] = ["Maria Silva", "João Souza"];
+export const equipe: string[] = [];
 
-// Instituição e orientação (deixe "" se não quiser mostrar).
-export const instituicao = "Nome da instituição de ensino";
-export const orientacao = "Nome do(a) professor(a) orientador(a)";
+export const curso = "Ciência da Computação";
+export const instituicao = "Uninassau";
+export const orientacao = "Profa. Alice Alencar";
+export const parceria = "AMA-PI (Associação de Amigos dos Autistas do Piauí)";
 
-// E-mail de contato do projeto (aparece no Sobre, no "Fale conosco" e na Política de Privacidade).
-export const emailContato = "contato@exemplo.com";
+// E-mail de contato do projeto (aparece no Sobre, na Acessibilidade e na Política de Privacidade).
+// Enquanto estiver vazio (""), essas páginas não mostram e-mail.
+export const emailContato = "";
 
 // Redes sociais do projeto. Deixe "" enquanto a conta não existir:
-// o ícone aparece no rodapé marcado como "em breve", sem link.
+// o ícone só aparece no rodapé quando tiver link.
 export const redesSociais = {
   instagram: "",
   youtube: "",

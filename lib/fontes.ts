@@ -4,13 +4,28 @@ import type { Fonte } from "@/components/ui";
 export const fontes = {
   msTea: {
     orgao: "Ministério da Saúde",
-    titulo: "Transtorno do Espectro Autista (TEA)",
-    url: "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/t/tea",
+    titulo: "Autismo",
+    url: "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/autismo",
   },
   omsAutismo: {
     orgao: "Organização Mundial da Saúde (OMS)",
     titulo: "Autism — Fact sheet",
     url: "https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders",
+  },
+  msDiretrizesTea: {
+    orgao: "Ministério da Saúde",
+    titulo: "Diretrizes de Atenção à Reabilitação da Pessoa com Transtornos do Espectro do Autismo (TEA)",
+    url: "https://bvsms.saude.gov.br/bvs/publicacoes/diretrizes_atencao_reabilitacao_pessoa_autismo.pdf",
+  },
+  niceCg170: {
+    orgao: "NICE (Instituto Nacional de Excelência em Saúde e Cuidados, Reino Unido)",
+    titulo: "Autism spectrum disorder in under 19s: support and management (CG170)",
+    url: "https://www.nice.org.uk/guidance/cg170",
+  },
+  nasOrientacoes: {
+    orgao: "National Autistic Society (Reino Unido)",
+    titulo: "Advice and guidance — orientações para pessoas autistas, famílias e profissionais",
+    url: "https://www.autism.org.uk/advice-and-guidance",
   },
   cdcSinais: {
     orgao: "CDC (Centros de Controle e Prevenção de Doenças, EUA)",
@@ -78,19 +93,19 @@ export const fontes = {
     url: "https://www.gov.br/mdh/pt-br/assuntos/noticias/2025/maio/pela-primeira-vez-ibge-divulga-dados-sobre-pessoas-com-deficiencia-no-brasil",
   },
   amaPi: {
-    orgao: "AMA-PI",
-    titulo: "Associação de Amigos dos Autistas do Piauí",
-    url: "https://amapiaui.com.br/",
+    orgao: "Ipea — Mapa das Organizações da Sociedade Civil",
+    titulo: "Associação de Amigos dos Autistas do Piauí (AMA-PI)",
+    url: "https://mapaosc.ipea.gov.br/detalhar/422543",
   },
   ceir: {
     orgao: "CEIR",
-    titulo: "Centro Integrado de Reabilitação — serviços",
-    url: "https://www.reabilitar.org.br/ceir-acesse-nossos-servicos/",
+    titulo: "Centro Integrado de Reabilitação — como chegar",
+    url: "https://www.reabilitar.org.br/ceir/como-chegar/",
   },
   cetea: {
-    orgao: "Governo do Estado do Piauí",
-    titulo: "Centro de atendimento para pessoas com autismo (Cetea)",
-    url: "https://www.pi.gov.br/centro-de-atendimento-para-pessoas-com-autismo-avanca-no-piaui/",
+    orgao: "Governo do Estado do Piauí (Seid)",
+    titulo: "Primeiro Centro Especializado em Autismo do Piauí (Cetea-PI) — como conseguir atendimento",
+    url: "https://www.seid.pi.gov.br/blog/primeiro-centro-especializado-em-autismo-do-piaui-ja-realizou-10-mil-atendimentos/",
   },
   defensoriaPi: {
     orgao: "Defensoria Pública do Estado do Piauí",

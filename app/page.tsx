@@ -120,7 +120,7 @@ export default function Inicio() {
             ))}
           </ul>
           <p className="mt-6">
-            <LinkSeta href="/biblioteca#crises-e-regulacao-sensorial">Ver mais situações</LinkSeta>
+            <LinkSeta href="/biblioteca">Ver todos os temas da biblioteca</LinkSeta>
           </p>
         </section>
 
@@ -138,7 +138,7 @@ export default function Inicio() {
               <li key={passo} className="flex items-center gap-3 font-titulo text-nota font-semibold text-marinho">
                 <span aria-hidden="true" className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-alerta-num text-mini font-extrabold">
                   {i + 1}
-                </span>
+                </span>{" "}
                 {passo}
               </li>
             ))}
@@ -191,7 +191,7 @@ export default function Inicio() {
             </Link>
           </div>
           <div className="relative h-56 lg:h-auto">
-            <Image src="/images/rede-de-apoio.jpg" alt="" fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
+            <Image src="/images/rede-de-apoio.jpg" alt="Mãos de várias pessoas unidas no centro de uma roda, em sinal de apoio." fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
           </div>
         </div>
       </section>

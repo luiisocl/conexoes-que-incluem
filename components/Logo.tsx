@@ -26,11 +26,11 @@ export function Logo({ claro = false }: { claro?: boolean }) {
           que Incluem
         </span>
         <span
-          className={`mt-1 font-titulo text-[0.625rem] leading-none font-bold uppercase tracking-[0.14em] ${
+          className={`mt-1 font-titulo text-[0.625rem] leading-none font-bold uppercase tracking-[0.06em] ${
             claro ? "text-azul-circ" : "text-azul"
           }`}
         >
-          Informação que acolhe
+          Guia Digital de Apoio ao Autismo
         </span>
       </span>
     </span>

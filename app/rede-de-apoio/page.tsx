@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { Building2, ExternalLink, HeartHandshake, Hospital, Phone, Scale, School } from "lucide-react";
+import { Building2, Clock, ExternalLink, HeartHandshake, Hospital, MapPin, Phone, Scale, School } from "lucide-react";
 import { CabecalhoPagina, Fontes, IconeCirculo } from "@/components/ui";
 import { fontes } from "@/lib/fontes";
 import type { Cor } from "@/lib/cores";
@@ -17,45 +16,55 @@ type Servico = {
   nome: string;
   tipo: string;
   descricao: string;
+  endereco?: string;
+  telefones?: string[];
+  horario?: string;
   url?: string;
   icone: LucideIcon;
   cor: Cor;
 };
 
-// Informações verificadas em outubro de 2026. Confirme horários e documentos direto com cada instituição.
+// Informações conferidas nos sites oficiais em 20 de outubro de 2026.
+// Endereços, telefones e horários podem mudar: confirme direto com cada instituição.
 const servicos: Servico[] = [
   {
     nome: "AMA-PI — Associação de Amigos dos Autistas do Piauí",
     tipo: "Associação sem fins lucrativos",
     descricao:
       "Organização formada por famílias, amigos e pessoas autistas, em Teresina desde 2000. Oferece atendimento multiprofissional e ações para promover autonomia e dignidade da pessoa autista e da família.",
-    url: "https://amapiaui.com.br/",
+    endereco: "Rua José Clemente Pereira, 2384, Primavera, Teresina - PI",
     icone: HeartHandshake,
     cor: "verde",
+  },
+  {
+    nome: "Cetea-PI — Centro Especializado em Transtorno do Espectro Autista",
+    tipo: "Governo do Estado do Piauí · gratuito",
+    descricao:
+      "Centro público estadual com equipe de várias especialidades para diagnóstico e terapias. Para ser atendido, peça na UBS um encaminhamento para “consulta triagem Cetea-PI” e depois confirme pela central de marcação.",
+    endereco: "Av. Higino Cunha, 1552, Cristo Rei, Teresina - PI",
+    telefones: ["(86) 2222-7150 (central de marcação)"],
+    horario: "Segunda a sexta, das 8h às 17h",
+    url: "https://www.seid.pi.gov.br/blog/primeiro-centro-especializado-em-autismo-do-piaui-ja-realizou-10-mil-atendimentos/",
+    icone: Building2,
+    cor: "lilas",
   },
   {
     nome: "CEIR — Centro Integrado de Reabilitação",
     tipo: "Atendimento pelo SUS",
     descricao:
-      "Centro de reabilitação que atende pessoas com TEA com equipe multiprofissional. O acesso é por encaminhamento da rede pública de saúde, a partir da Unidade Básica de Saúde.",
-    url: "https://www.reabilitar.org.br/ceir-acesse-nossos-servicos/",
+      "Centro de reabilitação com equipe multiprofissional, que também atende pessoas com TEA. O acesso é por encaminhamento médico da rede pública, a partir da Unidade Básica de Saúde.",
+    endereco: "Av. Higino Cunha, 1515, Ilhotas, Teresina - PI",
+    telefones: ["(86) 3198-1500"],
+    horario: "Segunda a sexta, das 7h às 17h",
+    url: "https://www.reabilitar.org.br/ceir/como-chegar/",
     icone: Hospital,
     cor: "azul",
-  },
-  {
-    nome: "Cetea — Centro Especializado de Atendimento às Pessoas com TEA",
-    tipo: "Governo do Estado do Piauí",
-    descricao:
-      "Equipamento público estadual dedicado ao atendimento especializado de pessoas com autismo, em Teresina.",
-    url: "https://www.pi.gov.br/centro-de-atendimento-para-pessoas-com-autismo-avanca-no-piaui/",
-    icone: Building2,
-    cor: "lilas",
   },
   {
     nome: "Unidade Básica de Saúde (UBS)",
     tipo: "Porta de entrada do SUS",
     descricao:
-      "O primeiro passo para avaliação e encaminhamento. Procure a UBS mais perto de casa e conte o que você tem observado.",
+      "O primeiro passo para avaliação e encaminhamento. Procure a UBS mais perto de casa e conte o que você tem observado. Leve RG, CPF, cartão do SUS e comprovante de residência.",
     icone: Hospital,
     cor: "rosa",
   },
@@ -63,6 +72,8 @@ const servicos: Servico[] = [
     nome: "Defensoria Pública do Estado do Piauí",
     tipo: "Orientação jurídica gratuita",
     descricao: "Pode ajudar quando um direito for negado, como matrícula escolar, tratamento ou atendimento prioritário.",
+    endereco: "Rua Nogueira Tapety, 138, Noivos, Teresina - PI",
+    horario: "Segunda a sexta, das 8h às 14h",
     url: "https://www.defensoria.pi.def.br/",
     icone: Scale,
     cor: "amarelo",
@@ -98,7 +109,7 @@ export default function RedeDeApoio() {
             </p>
           </div>
           <div className="relative h-48 md:h-auto">
-            <Image src="/images/rede-de-apoio.jpg" alt="" fill sizes="(min-width: 768px) 22rem, 100vw" className="object-cover" />
+            <Image src="/images/rede-de-apoio.jpg" alt="Mãos de várias pessoas unidas no centro de uma roda, em sinal de apoio." fill sizes="(min-width: 768px) 22rem, 100vw" className="object-cover" />
           </div>
         </div>
 
@@ -110,6 +121,37 @@ export default function RedeDeApoio() {
                 <p className="text-mini font-bold text-texto-suave uppercase">{s.tipo}</p>
                 <h2 className="mt-1 text-h4">{s.nome}</h2>
                 <p className="mt-2 text-nota text-texto">{s.descricao}</p>
+                {(s.endereco || s.telefones || s.horario) && (
+                  <ul className="mt-3 space-y-1.5 text-nota text-texto">
+                    {s.endereco && (
+                      <li className="flex gap-2">
+                        <MapPin aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-texto-suave" />
+                        <span>
+                          <span className="sr-only">Endereço: </span>
+                          {s.endereco}
+                        </span>
+                      </li>
+                    )}
+                    {s.telefones?.map((t) => (
+                      <li key={t} className="flex gap-2">
+                        <Phone aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-texto-suave" />
+                        <span>
+                          <span className="sr-only">Telefone: </span>
+                          <a href={`tel:+55${t.replace(/\D/g, "").slice(0, 10)}`}>{t}</a>
+                        </span>
+                      </li>
+                    ))}
+                    {s.horario && (
+                      <li className="flex gap-2">
+                        <Clock aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-texto-suave" />
+                        <span>
+                          <span className="sr-only">Horário: </span>
+                          {s.horario}
+                        </span>
+                      </li>
+                    )}
+                  </ul>
+                )}
                 {s.url && (
                   <a href={s.url} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-1.5 text-nota font-bold">
                     Site oficial
@@ -140,9 +182,8 @@ export default function RedeDeApoio() {
         </section>
 
         <p className="mt-8 max-w-texto text-nota text-texto-suave">
-          Informações verificadas em outubro de 2026. Endereços, horários e documentos podem mudar:
-          confirme diretamente com cada instituição. Conhece outro serviço que deveria estar aqui?{" "}
-          <Link href="/sobre#contato">Fale conosco</Link>.
+          Informações conferidas nos sites oficiais em outubro de 2026. Endereços, telefones e
+          horários podem mudar: confirme diretamente com cada instituição antes de ir.
         </p>
 
         <Fontes fontes={[fontes.amaPi, fontes.ceir, fontes.cetea, fontes.defensoriaPi, fontes.cvv]} />

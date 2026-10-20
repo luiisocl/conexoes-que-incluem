@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { BookOpenCheck, Info, MessageCircleHeart, ShieldCheck, Sparkles, type LucideIcon } from "lucide-react";
 import { CabecalhoPagina, IconeCirculo, Nota, Secao, Sumario } from "@/components/ui";
 import type { Cor } from "@/lib/cores";
-import { emailContato, equipe, instituicao, orientacao } from "@/data/equipe";
+import { curso, emailContato, equipe, instituicao, orientacao, parceria } from "@/data/equipe";
 
 export const metadata: Metadata = {
   title: "Sobre o projeto",
@@ -19,7 +19,7 @@ const principios: { titulo: string; texto: string; icone: LucideIcon; cor: Cor }
   {
     titulo: "Fontes oficiais",
     texto:
-      "Só publicamos informação geral e bem estabelecida, com links para Ministério da Saúde, OMS, CDC e legislação brasileira. Não inventamos números.",
+      "Só publicamos informação geral e bem estabelecida, com links para Ministério da Saúde, OMS, CDC, NICE, National Autistic Society e legislação brasileira. Não inventamos números.",
     icone: BookOpenCheck,
     cor: "azul",
   },
@@ -38,8 +38,8 @@ const principios: { titulo: string; texto: string; icone: LucideIcon; cor: Cor }
     cor: "lilas",
   },
   {
-    titulo: "Pouco dado pessoal",
-    texto: "No cadastro pedimos só o essencial e nunca pedimos diagnóstico ou dados de saúde.",
+    titulo: "Sem coleta de dados",
+    texto: "O site não pede cadastro, não coleta dados pessoais e não usa cookies de rastreamento.",
     icone: ShieldCheck,
     cor: "verde",
   },
@@ -67,10 +67,6 @@ export default function Sobre() {
               técnicos ou misturada com promessas sem base. O Conexões que Incluem quer reunir o essencial num só
               lugar, com linguagem clara e fontes confiáveis.
             </p>
-            <p>
-              O projeto nasceu como trabalho acadêmico e está em fase inicial. Algumas seções, como
-              o diretório de profissionais e as doações, ainda estão em construção.
-            </p>
           </Secao>
 
           <Secao id="principios" titulo="Princípios">
@@ -87,30 +83,34 @@ export default function Sobre() {
 
           <Secao id="quem-somos" titulo="Quem somos">
             <p>
-              Projeto acadêmico desenvolvido por estudantes
-              {instituicao && <> de {instituicao}</>}
-              {orientacao && <>, com orientação de {orientacao}</>}.
+              O Conexões que Incluem é um projeto acadêmico de estudantes do curso de {curso} da{" "}
+              {instituicao}, com orientação da {orientacao} e em parceria com a {parceria}.
             </p>
-            <ul className="divide-y divide-borda rounded-card border border-borda bg-fundo">
-              {equipe.map((membro) => (
-                <li
-                  key={membro.nome}
-                  className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 px-5 py-4"
-                >
-                  <span className="font-titulo font-bold text-marinho">{membro.nome}</span>
-                  <span className="text-nota text-texto-suave">
-                    {[membro.funcao, membro.curso].filter(Boolean).join(" · ")}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            {equipe.length > 0 && (
+              <>
+                <h3 className="text-h4">Equipe</h3>
+                <ul className="divide-y divide-borda rounded-card border border-borda bg-fundo">
+                  {equipe.map((nome) => (
+                    <li key={nome} className="px-5 py-3.5 font-titulo font-bold text-marinho">
+                      {nome}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </Secao>
         </div>
 
         <aside>
-          <Nota titulo="Fale conosco">
-            <p className="break-words">{emailContato}</p>
-          </Nota>
+          {emailContato && (
+            <div id="contato" className="scroll-mt-6">
+              <Nota titulo="Fale conosco">
+                <p className="break-words">
+                  <a href={`mailto:${emailContato}`}>{emailContato}</a>
+                </p>
+              </Nota>
+            </div>
+          )}
         </aside>
       </div>
     </>

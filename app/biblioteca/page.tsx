@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Library } from "lucide-react";
 import { CardCategoria } from "@/components/CardCategoria";
 import { AvisoSaude, CabecalhoPagina, IconeCirculo, SetaCirculo } from "@/components/ui";
+import { emailContato } from "@/data/equipe";
 import { listarArtigos } from "@/lib/artigos";
 import { categorias } from "@/lib/categorias";
 import { classesCor } from "@/lib/cores";
@@ -80,10 +81,11 @@ export default async function Biblioteca() {
           );
         })}
 
-        <p className="mt-14 rounded-card bg-faixa p-5 text-nota">
-          Tem uma sugestão de tema? Faça seu <Link href="/cadastro">cadastro</Link> e conte no
-          campo de interesse.
-        </p>
+        {emailContato && (
+          <p className="mt-14 rounded-card bg-faixa p-5 text-nota">
+            Tem uma sugestão de tema? <Link href="/sobre#contato">Fale conosco</Link>.
+          </p>
+        )}
       </div>
     </>
   );

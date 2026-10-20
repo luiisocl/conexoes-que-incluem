@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Accessibility } from "lucide-react";
 import { PainelAcessibilidade } from "@/components/PainelAcessibilidade";
 import { CabecalhoPagina, ListaMarcada, Secao } from "@/components/ui";
@@ -44,10 +43,15 @@ export default function Acessibilidade() {
               Se algo estiver difícil de ler, de entender ou de usar, conte para a gente. Isso nos
               ajuda a melhorar.
             </p>
-            <p>
-              Escreva para <strong className="break-words text-marinho">{emailContato}</strong> ou veja{" "}
-              <Link href="/sobre#contato">Fale conosco</Link>.
-            </p>
+            {emailContato && (
+              <p>
+                Escreva para{" "}
+                <a href={`mailto:${emailContato}`} className="break-words font-bold">
+                  {emailContato}
+                </a>
+                .
+              </p>
+            )}
           </Secao>
         </div>
       </div>
