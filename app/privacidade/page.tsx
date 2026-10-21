@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { ShieldCheck } from "lucide-react";
 import { CabecalhoPagina, Fontes, ListaMarcada, Secao } from "@/components/ui";
-import { emailContato } from "@/data/equipe";
+import Link from "next/link";
+import { temContato } from "@/data/equipe";
 import { fontes } from "@/lib/fontes";
 
 export const metadata: Metadata = {
@@ -46,14 +47,11 @@ export default function Privacidade() {
           </p>
         </Secao>
 
-        {emailContato && (
+        {temContato && (
           <Secao id="duvidas" titulo="Dúvidas">
             <p>
-              Escreva para{" "}
-              <a href={`mailto:${emailContato}`} className="break-words font-bold">
-                {emailContato}
-              </a>
-              .
+              Escreva para a equipe: os e-mails estão na página{" "}
+              <Link href="/sobre#contato">Sobre o projeto</Link>.
             </p>
           </Secao>
         )}

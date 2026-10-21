@@ -33,6 +33,8 @@ const servicos: Servico[] = [
     descricao:
       "Organização formada por famílias, amigos e pessoas autistas, em Teresina desde 2000. Oferece atendimento multiprofissional e ações para promover autonomia e dignidade da pessoa autista e da família.",
     endereco: "Rua José Clemente Pereira, 2384, Primavera, Teresina - PI",
+    telefones: ["(86) 99520-0940"],
+    horario: "Das 8h às 11h e das 14h às 17h",
     icone: HeartHandshake,
     cor: "verde",
   },
@@ -137,7 +139,7 @@ export default function RedeDeApoio() {
                         <Phone aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-texto-suave" />
                         <span>
                           <span className="sr-only">Telefone: </span>
-                          <a href={`tel:+55${t.replace(/\D/g, "").slice(0, 10)}`}>{t}</a>
+                          <a href={`tel:+55${t.replace(/\D/g, "")}`}>{t}</a>
                         </span>
                       </li>
                     ))}

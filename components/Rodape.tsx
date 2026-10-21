@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { MapPin } from "lucide-react";
-import { emailContato, redesSociais } from "@/data/equipe";
+import { redesSociais, temContato } from "@/data/equipe";
 import { cidade, emergencia, linksRodape } from "@/lib/navegacao";
 import { IconeInstagram, IconeSpotify, IconeYoutube } from "./IconesSociais";
 import { Logo } from "./Logo";
@@ -22,7 +22,7 @@ export function Rodape() {
 
         <nav aria-label="Rodapé" className="flex-1">
           <ul className="flex flex-wrap gap-x-1 gap-y-2 lg:justify-center xl:flex-nowrap">
-            {linksRodape.filter((l) => emailContato || l.href !== "/sobre#contato").map((l, i) => (
+            {linksRodape.filter((l) => temContato || l.href !== "/sobre#contato").map((l, i) => (
               <li key={l.href} className="flex items-center">
                 {i > 0 && <span aria-hidden="true" className="mx-3 hidden h-4 w-px bg-branco/25 sm:block" />}
                 <Link

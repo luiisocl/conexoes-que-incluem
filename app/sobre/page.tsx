@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { BookOpenCheck, Info, MessageCircleHeart, ShieldCheck, Sparkles, type LucideIcon } from "lucide-react";
-import { CabecalhoPagina, IconeCirculo, Nota, Secao, Sumario } from "@/components/ui";
+import { BookOpenCheck, Info, Mail, MessageCircleHeart, ShieldCheck, Sparkles, type LucideIcon } from "lucide-react";
+import { CabecalhoPagina, IconeCirculo, Secao, Sumario } from "@/components/ui";
 import type { Cor } from "@/lib/cores";
-import { curso, emailContato, equipe, instituicao, orientacao, parceria } from "@/data/equipe";
+import { curso, equipe, instituicao, orientacao, parceria } from "@/data/equipe";
 
 export const metadata: Metadata = {
   title: "Sobre o projeto",
@@ -55,7 +55,7 @@ export default function Sobre() {
         </p>
       </CabecalhoPagina>
 
-      <div className="container-pagina mt-10 grid gap-10 lg:grid-cols-[16rem_minmax(0,1fr)_16rem]">
+      <div className="container-pagina mt-10 grid gap-10 lg:grid-cols-[16rem_minmax(0,1fr)]">
         <div>
           <Sumario itens={secoesPagina} />
         </div>
@@ -87,31 +87,29 @@ export default function Sobre() {
               {instituicao}, com orientação da {orientacao} e em parceria com a {parceria}.
             </p>
             {equipe.length > 0 && (
-              <>
+              <div id="contato" className="scroll-mt-6">
                 <h3 className="text-h4">Equipe</h3>
-                <ul className="divide-y divide-borda rounded-card border border-borda bg-fundo">
-                  {equipe.map((nome) => (
-                    <li key={nome} className="px-5 py-3.5 font-titulo font-bold text-marinho">
-                      {nome}
+                <p className="mt-1 text-nota text-texto-suave">
+                  Dúvidas, sugestões ou algum problema no site? Escreva para qualquer pessoa da equipe.
+                </p>
+                <ul className="mt-4 divide-y divide-borda rounded-card border border-borda bg-fundo">
+                  {equipe.map(({ nome, email }) => (
+                    <li key={nome} className="px-5 py-3.5">
+                      <span className="block font-titulo font-bold text-marinho">{nome}</span>
+                      {email && (
+                        <a href={`mailto:${email}`} className="mt-0.5 inline-flex items-center gap-1.5 break-all text-nota">
+                          <Mail aria-hidden="true" className="h-4 w-4 shrink-0" />
+                          {email}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>
-              </>
+              </div>
             )}
           </Secao>
         </div>
 
-        <aside>
-          {emailContato && (
-            <div id="contato" className="scroll-mt-6">
-              <Nota titulo="Fale conosco">
-                <p className="break-words">
-                  <a href={`mailto:${emailContato}`}>{emailContato}</a>
-                </p>
-              </Nota>
-            </div>
-          )}
-        </aside>
       </div>
     </>
   );

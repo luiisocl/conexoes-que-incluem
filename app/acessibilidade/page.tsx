@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Accessibility } from "lucide-react";
 import { PainelAcessibilidade } from "@/components/PainelAcessibilidade";
 import { CabecalhoPagina, ListaMarcada, Secao } from "@/components/ui";
-import { emailContato } from "@/data/equipe";
+import Link from "next/link";
+import { temContato } from "@/data/equipe";
 
 export const metadata: Metadata = {
   title: "Acessibilidade",
@@ -43,13 +44,10 @@ export default function Acessibilidade() {
               Se algo estiver difícil de ler, de entender ou de usar, conte para a gente. Isso nos
               ajuda a melhorar.
             </p>
-            {emailContato && (
+            {temContato && (
               <p>
-                Escreva para{" "}
-                <a href={`mailto:${emailContato}`} className="break-words font-bold">
-                  {emailContato}
-                </a>
-                .
+                Escreva para a equipe: os e-mails estão na página{" "}
+                <Link href="/sobre#contato">Sobre o projeto</Link>.
               </p>
             )}
           </Secao>
