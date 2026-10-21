@@ -3,10 +3,10 @@
 export const equipe: { nome: string; email: string }[] = [
   { nome: "Carlos Saulo Fernandes de Siqueira", email: "carlossaulofsiqueira@gmail.com" },
   { nome: "João Pedro Soares Oliveira", email: "joaopedrosoaresoliveira2006@gmail.com" },
-  { nome: "Jose Wilson Oliveira Rodrigues", email: "joseoliveirarodrigues65@gmail.com" },
+  { nome: "José Wilson Oliveira Rodrigues", email: "joseoliveirarodrigues65@gmail.com" },
   { nome: "Leonardo Santana Fernandes Segundo", email: "lsantan30@gmail.com" },
   { nome: "Luis Guilherme de Oliveira Caminha Leal", email: "lg3545396@gmail.com" },
-  { nome: "Ramon Frota Assuncao", email: "ramoncorporativoexe@gmail.com" },
+  { nome: "Ramon Frota Assunção", email: "ramoncorporativoexe@gmail.com" },
 ];
 
 /** Há pelo menos um e-mail para contato? Controla os links "Fale conosco" do site. */
